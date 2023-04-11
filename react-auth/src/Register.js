@@ -20,10 +20,15 @@ export default function Register() {
                 password
             }
         }
-            // make the API call
-    axios(configuration)
-    .then((result) => {console.log(result);})
-    .catch((error) => {console.log(error);})
+        // make the API call
+        axios(configuration)
+            .then((result) => {
+                setRegister(true);
+            })
+            .catch((error) => {
+                error = new Error();
+            });
+
     }
 
     return (
@@ -59,7 +64,12 @@ export default function Register() {
                     Submit
                 </Button>
             </Form>
-
+ {/* display success message */}
+ {register ? (
+          <p className="text-success">You Are Registered Successfully</p>
+        ) : (
+          <p className="text-danger">You Are Not Registered</p>
+        )}
         </>
     )
 }
