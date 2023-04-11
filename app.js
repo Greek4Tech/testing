@@ -19,5 +19,11 @@ app.get("/", (request, response, next) => {
   next();
 });
 
+app.post("/register", (request, response) => {
+  // The code below is telling bcrypt to hash the password received from request body 10 times or 10 salt rounds.
+  bcrypt.hash(request.body.password, 10)
+  .then()
+  .catch()
+});
 
 module.exports = app;
