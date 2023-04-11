@@ -1,5 +1,6 @@
 import { Container, Col, Row } from "react-bootstrap";
 import Register from "./Register";
+import Login from "./Login"
 
 function App() {
   return (
@@ -9,7 +10,9 @@ function App() {
           <Register />
         </Col>
 
-        <Col xs={12} sm={12} md={6} lg={6}></Col>
+        <Col xs={12} sm={12} md={6} lg={6}>
+          <Login />
+        </Col>
       </Row>
     </Container>
   );
