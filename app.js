@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
+const bcrypt = require("bcrypt");
 
 // require database connection 
 const dbConnect = require("./db/dbConnect");
+const User = require("./db/userModel");
 
 // execute database connection 
 dbConnect();
