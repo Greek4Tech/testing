@@ -11,6 +11,23 @@ const User = require("./db/userModel");
 // execute database connection 
 dbConnect();
 
+// Curb Cores Error by adding a header here
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
+});
+
+// import auth function
+const auth = require("./auth");
+
 // body parser configuration
 app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -113,6 +130,16 @@ app.post("/login", (request, response) => {
         e,
       });
     });
+});
+
+// free endpoint
+app.get("/free-endpoint", (request, response) => {
+  response.json({ message: "You are free to access me anytime" });
+});
+
+// authentication endpoint
+app.get("/auth-endpoint", auth, (request, response) => {
+  response.json({ message: "You are authorized to access me" });
 });
 
 module.exports = app;
