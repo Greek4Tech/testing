@@ -26,10 +26,13 @@ export default function Login() {
         axios(configuration)
             .then((result) => {
                 setLogin(true);
-                // set the cookie
+                // set the cookie with cookie.set()
+                // takes three arguments
                 cookies.set("TOKEN", result.data.token, {
                     path: "/",
                 });
+                     // redirect user to the auth page
+        window.location.href = "/auth";
             })
             .catch((error) => {
                 error = new Error();
