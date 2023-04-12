@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 import Account from "./Account";
 import AuthComponent from "./AuthComponent";
 import FreeComponent from "./FreeComponent";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
   return (
