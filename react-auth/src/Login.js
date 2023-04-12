@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -23,6 +26,10 @@ export default function Login() {
         axios(configuration)
             .then((result) => {
                 setLogin(true);
+                // set the cookie
+                cookies.set("TOKEN", result.data.token, {
+                    path: "/",
+                });
             })
             .catch((error) => {
                 error = new Error();
