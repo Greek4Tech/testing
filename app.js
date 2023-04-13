@@ -78,6 +78,8 @@ app.post("/register", (request, response) => {
 
 // login endpoint
 app.post("/login", (request, response) => {
+  console.log("Email received:", request.body.email);
+  console.log("Password received:", request.body.password);
   // check if email exists
   User.findOne({ email: request.body.email })
 
