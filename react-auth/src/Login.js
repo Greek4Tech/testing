@@ -18,29 +18,28 @@ export default function Login() {
             method: "post",
             url: "http://localhost:4000/login",
             data: {
-              email,
-              password
+                email,
+                password
             }
-          }
-          console.log(configuration.data);
-          
+        }
+
         // make the API call
         axios(configuration)
-  .then((result) => {
-    setLogin(true);
-    console.log("API call successful: ", result);
-    // set the cookie with cookie.set()
-    // takes three arguments
-    cookies.set("TOKEN", result.data.token, {
-      path: "/",
-    });
-    // redirect user to the auth page
-    window.location.href = "/auth";
-  })
-  .catch((error) => {
-    console.log("API call error: ", error);
-    error = new Error();
-  });
+            .then((result) => {
+                setLogin(true);
+                console.log("API call successful: ", result);
+                // set the cookie with cookie.set()
+                // takes three arguments
+                cookies.set("TOKEN", result.data.token, {
+                    path: "/",
+                });
+                // redirect user to the auth page
+                window.location.href = "/auth";
+            })
+            .catch((error) => {
+                console.log("API call error: ", error);
+                error = new Error();
+            });
 
 
     }
