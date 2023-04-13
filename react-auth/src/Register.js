@@ -64,12 +64,12 @@ export default function Register() {
                     Submit
                 </Button>
             </Form>
- {/* display success message */}
- {register ? (
-          <p className="text-success">You Are Registered Successfully</p>
-        ) : (
-          <p className="text-danger">You Are Not Registered</p>
-        )}
+            {/* display success message */}
+            {register ? (
+                <p className="text-success">You Are Registered Successfully</p>
+            ) : (
+                <p className="text-danger">You Are Not Registered</p>
+            )}
         </>
     )
 }
