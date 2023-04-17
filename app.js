@@ -96,7 +96,7 @@ app.post("/login", (request, response) => {
           // check if password matches
           if(!passwordCheck) {
             return response.status(400).send({
-              message: "Passwords does not match",
+              message: "Passwords do not match",
               error,
             });
           }
@@ -121,7 +121,7 @@ app.post("/login", (request, response) => {
         // catch error if password does not match
         .catch((error) => {
           response.status(400).send({
-            message: "Passwords does not match",
+            message: "Passwords do not match",
             error,
           });
         });

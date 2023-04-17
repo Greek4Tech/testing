@@ -1,32 +1,31 @@
-import React from 'react';
+import { Switch, Route } from "react-router-dom";
 import { Container, Col, Row } from "react-bootstrap";
-import Register from "./Register";
-import Login from "./Login"
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Account from "./Account";
-import AuthComponent from "./AuthComponent";
 import FreeComponent from "./FreeComponent";
+import AuthComponent from "./AuthComponent";
 import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
   return (
     <Container>
-      <Col className="text-center">
-        <h1>React Authentication Tutorial</h1>
-      </Col>
-      <Routes>
-        <Route exact path="/" element={<Account />} />
-        <Route exact path="/free" element={<FreeComponent />} />
-        <Route
-          exact
-          path="/auth"
-          render={() => (
-            <ProtectedRoutes>
-              <AuthComponent />
-            </ProtectedRoutes>
-          )}
-        />
-      </Routes>
+      <Row>
+        <Col className="text-center">
+          <h1>React Authentication Tutorial</h1>
+
+          <section id="navigation">
+            <a href="/">Home</a>
+            <a href="/free">Free Component</a>
+            <a href="/auth">Auth Component</a>
+          </section>
+        </Col>
+      </Row>
+
+      {/* create routes here */}
+      <Switch>
+        <Route exact path="/" component={Account} />
+        <Route exact path="/free" component={FreeComponent} />
+        <ProtectedRoutes path="/auth" component={AuthComponent} />
+      </Switch>
     </Container>
   );
 }
