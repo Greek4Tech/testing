@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect, NavLink } from "react-router-dom";
+import { Route, redirect , NavLink } from "react-router-dom";
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
@@ -19,17 +19,8 @@ export default function ProtectedRoutes({ component: Component, ...rest }) {
           return <Component {...props} />;
         } else {
           // returns the user to the landing page if there is no valid token set
-          return (
-            <NavLink
-              to={{
-                pathname: "/",
-                state: {
-                  // sets the location a user was about to access before being redirected to login
-                  from: props.location,
-                },
-              }}
-            />
-          );
+          return <redirect to={{ pathname: "/", state: { from: props.location } }} />;
+
         }
       }}
     />
